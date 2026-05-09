@@ -1,0 +1,32 @@
+﻿{
+  "sla": {
+    "name":        "SLA OpenStack DevStack",
+    "version":     "1.0",
+    "date":        "2026-04-05",
+    "description": "Service Level Agreement for OpenStack infrastructure",
+    "provider":    "OpenStack DevStack 2026.1",
+    "author":      "LAHLAIBI Ayoub"
+  },
+  "objectives": {
+    "availability_target": 99.5,
+    "evaluation_period":   "daily",
+    "unit":                "percentage",
+    "description":         "Instances must be available 99.5% of the time per day"
+  },
+  "metrics": {
+    "check_frequency": "5 minutes",
+    "method":          "Nova API OpenStack",
+    "status_ok":       ["ACTIVE"],
+    "status_error":    ["ERROR", "DELETED", "SHUTOFF"]
+  },
+  "monitored_instances": [
+    "VM-CentOS-Automatique",
+    "ubuntu",
+    "cirros-test"
+  ],
+  "actions": {
+    "alert_on_breach": true,
+    "auto_report":     true,
+    "report_file":     "rapport_sla.json"
+  }
+}
